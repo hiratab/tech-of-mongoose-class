@@ -59,6 +59,7 @@ async function run() {
 
     const products = await findProduct();
     console.log(products);
+    
   } finally {
     await mongoose.connection.close();
   }
