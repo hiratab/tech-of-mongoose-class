@@ -22,7 +22,7 @@ const getProduct = async ({
     queryObj = JSON.parse(queryObjString);
     console.log('queryObj', queryObj);
     if (id) {
-      query['_id'] = id
+      query['_id'] = id;
     };
 
     const paginationParameters = {
@@ -31,7 +31,9 @@ const getProduct = async ({
     };
 
     const sortObject = {};
-    sortObject[sortBy] = sortOrder;
+    if (sortBy && sortOrder) {
+      sortObject[sortBy] = sortOrder;
+    }
     return await Product
       .find(queryObj, {}, paginationParameters)
       .sort(sortObject);
